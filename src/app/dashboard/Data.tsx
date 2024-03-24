@@ -1,133 +1,67 @@
-//import "../styling/DashboardPage.css";
-//import SendMoney from "../components/SendMoney";
+/**
+ * v0 by Vercel.
+ * @see https://v0.dev/t/snpskRdncni
+ * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
+ */
 
-import Button from "../components/Button";
-type ABIMethod = {
-    [key: string]: any; // Loose definition to allow any properties
-};
 
-type ABI = ABIMethod[];
+export default function Data() {
 
-interface AnswerItem {
-    id: number;
-    name: string;
-    apy: number; // or string, depending on your data
-    available: number; // or string
-    deposited: number; // or string
-    tvl: number; // or string
-    address: string;
-    //abi: ABI;
-}
-async function getData() {
-    //get rid of the cache to make loads faster. 
-    //but this proves that it does get it from the server.
-    //const res = await fetch('http://localhost:3080', { cache: 'no-store' })
-    const res = [
-        {
-            id: 0,
-            name: "Curve",
-            apy: 2.61,
-            available: 0,
-            deposited: 0,
-            tvl: 52962,
-            address: "0xC92E8bdf79f0507f65a392b0ab4667716BFE0110"
-        },
-        {
-            id: 1,
-            name: "Ethereum",
-            apy: 4.23,
-            available: 12,
-            deposited: 4.01,
-            tvl: 5292,
-            address: "0x3a51269E0707A3416044bad5066858A12198fCf5"
-        },
-        {
-            id: 2,
-            name: "Bitcoin",
-            apy: 3.1,
-            available: 2,
-            deposited: .056,
-            tvl: 152,
-            address: "0xAD2f9A55518Dba12E8AB069502820923351667C5"
-        }
-    ];
-    await waitFor(3000);
-    return res;
-    // The return value is *not* serialized
-    // You can return Date, Map, Set, etc.
-    /*
-    if (!res.ok) {
-        // This will activate the closest `error.js` Error Boundary
-        throw new Error('Failed to fetch data') //maybe just return an error json
-        return "error";
-    }
-    await waitFor(3000);
+  return (
 
-    return res.json()
-    */
-}
-
-function waitFor(ms: number) {
-    return new Promise((resolve) => {
-        setTimeout(resolve, ms);
-    });
-}
-
-export default async function Data() {
-    const answer = await getData();
-    //console.log(JSON.stringify(answer, null, 2));
-    //handle errors w/ guard clause
-    //does not work
-    if (answer === null) {
-        return (
-            <div>Error</div>
-        );
-    }
-    //this is such a ugly way to apply CSS to divs
-    const listItems = answer.map((item: AnswerItem) => (
-        <div className="grid-container" key={item.id}>
-            <div className="grid-item">
-                <p>{item.name}</p>
-            </div>
-            <div className="grid-item">
-                <p>{item.apy}</p>
-            </div>
-            <div className="grid-item">
-                <p>{item.available}</p>
-            </div>
-            <div className="grid-item">
-                <p>{item.deposited}</p>
-            </div>
-            <div className="grid-item">
-                <p>{item.tvl}</p>
-            </div>
-            <div className="grid-item">
-                <input min="0" placeholder="Enter a number" type="number" />
-            </div>
-            <div className="grid-item">
-                <Button className="submit-button">
-                    Submit
-                </Button>
-            </div>
-        </div>
-    ));
-
-    /*
-        const listItems = answer.map((item: AnswerItem) => (
-        <div className="gridDashboard2" key={item.id}>
-            <div className="entry"> {item.name} </div>
-            <div className="entry"> {item.apy} </div>
-            <div className="entry"> {item.available} </div>
-            <div className="entry"> {item.deposited} </div>
-            <div className="entry"> {item.tvl} </div>
-        </div>
-    ));
-    */
-
-    //            <MintNFTForm address={item.address} abi={item.abi}/>
-    //            <SendMoney destination={item.abi} />
-    return (
-        <>{listItems}</>
-    );
+<div class="px-4 py-6 space-y-6 md:space-y-0">
+  <div class="space-y-2">
+    <h1 class="text-2xl font-bold">Submit your feedback</h1>
+    <p class="text-gray-500 dark:text-gray-400">Rate your employer.</p>
+  </div>
+  <div class="space-y-4">
+    <div class="grid grid-cols-2 gap-4">
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="company-name"
+        >
+          Company Name
+        </label>
+        <input
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="company-name"
+          placeholder="Enter your company name"
+        />
+      </div>
+      <div class="space-y-2">
+        <label
+          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          for="score"
+        >
+          Score (out of 100)
+        </label>
+        <input
+          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          id="score"
+          placeholder="Enter your score"
+          type="number"
+        />
+      </div>
+    </div>
+    <div class="space-y-2">
+      <label
+        class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        for="description"
+      >
+        Description
+      </label>
+      <textarea
+        class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 min-h-[100px]"
+        id="description"
+        placeholder="Enter your description"
+      ></textarea>
+    </div>
+    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">
+      Submit feedback
+    </button>
+  </div>
+</div>
+  );
 }
 

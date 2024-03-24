@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import GridWallet from './Wallet-provider';
+import WagmiWallet from './wagmi-provider';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="root">
-        <GridWallet>{children}</GridWallet>
+        <WagmiWallet>{children}</WagmiWallet>
         </div>
       </body>
     </html>

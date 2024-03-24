@@ -1,3 +1,5 @@
+import { readBlockData } from './call'
+
 // Assuming propsInterface is defined elsewhere and includes a property for the table rows.
 interface TableRow {
   companyName: string;
@@ -23,7 +25,8 @@ export default function TestingPage({ tableRows = defaultInterface.tableRows }: 
     if (tableRows === undefined){
         tableRows = defaultInterface.tableRows;
     }
-    
+    //let check = readBlockData();
+    //console.log(check)
     return (
         <div className="bg-blue-30/80 w-full min-h-screen py-12 sm:py-16">
           <div className="container px-4 py-12 md:py-16">

@@ -21,31 +21,7 @@ export default function DashboardPage() {
                 <ArrowUpIcon className="dash-icon-size" />
               </div>
             </div>
-            <div className="horizontal-center font-xxl font-bold-half font-secondary">Thing 1</div>
-
-                <div className="grid-container">
-                  <div className="grid-item">
-                    <p>Token</p>
-                  </div>
-                  <div className="grid-item">
-                    <p>APY</p>
-                  </div>
-                  <div className="grid-item">
-                    <p>Available</p>
-                  </div>
-                  <div className="grid-item">
-                    <p>Deposited</p>
-                  </div>
-                  <div className="grid-item">
-                    <p>TVL</p>
-                  </div>
-                  <div className="grid-item">
-                    <p>Amount</p>
-                  </div>
-                  <div className="grid-item">
-                    <p />
-                  </div>
-                </div>
+           
 
                 <Suspense fallback={<LoadingSpinner />}>
                   <Data />
